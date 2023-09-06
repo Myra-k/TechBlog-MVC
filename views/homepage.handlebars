@@ -1,0 +1,148 @@
+<html>
+<head>
+    <title>Music Updates</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body class="hp">
+    <!-- Your existing carousel code -->
+    <div id="carouselNew" class="carousel slide" data-ride="carousel" data-interval="3000">
+        <div class="carousel-inner">
+            {{#each Posts as |post index|}}
+            <div class="carousel-item{{#unless index}} active{{/unless}}">
+                <div class="row mb-4 post">
+                    <div class="col">
+                        <div class="post-card">
+
+                            <div class="post-content">
+                                <h2><a href="/post/{{post.id}}" class="post-title">{{post.title}}</a></h2>
+                                 <p class="post.body" id="postbody">{{post.body}}</p>
+                                <p class="metadata">Published on {{format_date post.date_created}} by {{user.name}}</p>
+                                <span><a href="/post/{{post.id}}" class="cover">Click me to see post</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+
+        <a class="carousel-control-prev" href="#carouselNew" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselNew" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <!-- Add this div where you want the YouTube video to appear -->
+    <div class="tracks-container">
+  <div class="top-tracks">
+    <hr class="hr">
+    <h1 class="top5">Top 5 Music Tracks</h1>
+      <hr class="hr">
+    <div id="top-tracks" class="tracks"></div>
+  </div>
+  <div class="recommended-tracks">
+    <hr class="hr">
+    <h1 class="recom">Recommended Music Tracks</h1>
+      <hr class="hr">
+    <div id="recommended-tracks" class="tracks"></div>
+  </div>
+</div>
+
+<div class="songsNow">
+  <div class="left-column">
+    <h1 class="listen">Listen to songs right now</h1>
+    <div id="playlist-container" class="playlist-container" style="min-height: 360px;"></div>
+  </div>
+  <div class="right-column">
+    <h1 class="pod">Music Podcast</h1>
+    <div id="youtube-player-container"></div>
+  </div>
+</div>
+
+
+    <div id="music-articles">
+        <hr class="line">
+        <h1 class="articles">Music Articles</h1>
+        <div id="article-container" class="article-container"></div>
+    </div>
+    <div id="hip-hop-articles"></div>
+
+    
+ <div id="chatbot-container">
+        <div id="chatbot-messages">
+            <!-- Messages from the chatbot will be appended here -->
+            <div class="message bot">Hello! How can I assist you?</div>
+            <!-- Add more messages here -->
+        </div>
+        <input type="text" id="user-input" placeholder="Type your message..." />
+    </div>
+
+    <script>
+        // Function to add a new message to the chatbot
+        function addMessage(className, message) {
+            const chatbotMessages = document.getElementById("chatbot-messages");
+            const newMessage = document.createElement("div");
+            newMessage.className = "message " + className;
+            newMessage.textContent = message;
+            chatbotMessages.appendChild(newMessage);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        // Function to handle user input and generate responses
+        function handleUserInput() {
+            const userInput = document.getElementById("user-input");
+            const userMessage = userInput.value;
+            if (userMessage.trim() !== "") {
+                addMessage("user", userMessage);
+
+                // Bot's responses based on user input
+                setTimeout(function () {
+                    let botResponse;
+                 switch (userMessage.toLowerCase()) {
+    case "what is your name?":
+        botResponse = "I'm just a stupid chatbot!";
+        break;
+    case "how old are you?":
+        botResponse = "I don't have an age. I'm just a computer program.";
+        break;
+    case "tell me a joke":
+        botResponse = "Why don't scientists trust atoms? Because they make up everything!";
+        break;
+    // Add more cases for other questions and responses here
+    default:
+        botResponse = "Sorry, I'm not sure how to respond to that.";
+        break;
+}
+
+
+                    addMessage("bot", botResponse);
+                }, 500);
+
+                userInput.value = "";
+            }
+        }
+
+        // Listen for Enter key press to handle user input
+        document.getElementById("user-input").addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                handleUserInput();
+            }
+        });
+    </script>
+
+    <!-- Your existing script tags -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="/js/homepage.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+
+</body>
+</html>

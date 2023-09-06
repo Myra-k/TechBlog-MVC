@@ -1,0 +1,77 @@
+<body class="bg">
+<div class="row">
+  <div class="col-auto">
+    <h2 class="welcome">Welcome, {{name}}!</h2>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-7">
+    <h3 class="new post">Create a New Blog Post:</h3>
+
+    <form class="new-post-form">
+      <div class="form-groups">
+        <label for="post-title" class="post-header">Title:</label>
+        <input class="input-form" type="text" id="post-title" name="post-title" />
+      </div>
+      <div class="form-groups">
+        <label for="post-content" class="content">Content:</label>
+        <textarea class="input-form" id="post-content" name="post-content"></textarea>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+
+
+
+   {{#if Posts.length}}
+      <div class="post-list">
+        <h3 class="recent">Recent Blog Posts:</h3> 
+        
+        {{#each Posts as |post|}}
+          <div class="row mb-2">
+            <div class="col-md-8">
+              <div class="audio-player">
+                <div class="album-cover"></div>
+                <div class="player-controls">
+                  <div class="blog-info">
+                    <p class="artist">{{name}}</p>
+                     <a href="./post/{{post.id}}">{{post.title}}</a>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress"></div>
+                  </div>
+                      <div class="buttons">
+                    <button class="play-btn">
+                      <svg viewBox="0 0 16 16" class="bi bi-play-fill" fill="currentColor" height="16" width="16"
+                        xmlns="http://www.w3.org/2000/svg" style="color: rgb(9, 9, 9)">
+                        <path fill="white"
+                          d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z">
+                        </path>
+                      </svg>
+                    </button>
+                    <button class="pause-btn">
+                      <svg viewBox="0 0 16 16" class="bi bi-pause-fill" fill="currentColor" height="16" width="16"
+                        xmlns="http://www.w3.org/2000/svg" style="color: rgb(0, 0, 0)">
+                        <path fill="white"
+                          d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z">
+                        </path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    {{/if}}
+  </div>
+</div>
+</body>
+<script src="./js/profile.js"></script>

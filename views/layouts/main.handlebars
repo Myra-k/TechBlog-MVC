@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TempoTells</title>
+  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <!-- Add your responsive CSS styles here -->
+
+</head>
+
+<body>
+  <header class="header">
+    <h1 class="logo">
+      <span role="img" aria-label="music">🎵</span>
+      <a href="/" class="title">TempoTells</a>
+    </h1>
+
+    <!-- Mobile-friendly navigation (consider using a hamburger menu) -->
+    <nav class="nav">
+      <ul>
+        <li class="li-inline nav-item"><a href="/">Home</a></li>
+        <li class="li-inline nav-item"><a href="/dashboard">Dashboard</a></li>
+        <li class="li-inline nav-item"><a href="/login">Login</a></li>
+        <li class="li-inline nav-item"><a href="#" id="logout-link">Logout</a></li>
+      </ul>
+    </nav>
+
+    {{#if logged_in}}
+    <a href="/profile" class="profile">Profile</a>
+    <button class="btn btn-logout" id="logout">Logout</button>
+    {{else}}
+    <a href="/login">Login</a>
+    {{/if}}
+
+  </header>
+  <main class="main">
+    <div class="container">
+      {{{ body }}}
+    </div>
+  </main>
+  <footer class="footer">
+    <p>&copy; 2023 TempoTells. All rights reserved.</p>
+  </footer>
+</body>
+<script src='./js/logout.js'></script>
+</html>
