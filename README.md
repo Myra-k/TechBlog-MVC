@@ -1,1 +1,1 @@
-# TempoTells-Blog
+# TechBlog-MVC
