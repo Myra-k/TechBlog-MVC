@@ -24,7 +24,7 @@ Clone this repository to your local machine. Install the required dependencies u
 
 ## Review
 
-* Heroku Deployed Application ()
+* Heroku Deployed Application (https://mvc-tech-blog-1-745dbea2baa7.herokuapp.com/)
 
 * URL Of Github Repository (https://github.com/Myra-k/TechBlog-MVC.git)
 
